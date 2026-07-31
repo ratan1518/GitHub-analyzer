@@ -1,7 +1,3 @@
----
-title: GitHub Profile Analyzer
-emoji: 🔭
-colorFrom: purple
-colorTo: pink
-sdk: streamlit
----
+# GitHub Profile Analyzer
+
+A GitHub profile analysis project that can be hosted on Vercel.
