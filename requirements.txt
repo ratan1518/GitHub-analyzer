@@ -1,1 +1,14 @@
 Flask
+pandas
+numpy
+plotly
+scikit-learn
+textblob
+wordcloud
+matplotlib
+python-dotenv
+nltk
+PyGithub
+pillow
+pyvis
+anthropic
