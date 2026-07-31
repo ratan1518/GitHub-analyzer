@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -114,9 +114,9 @@ HTML_PAGE = """
           <div class=\"pill\">🔭 GitHub Profile Analyzer</div>
           <h1>Understand a developer’s coding style, career story, and team fit.</h1>
           <p class=\"lead\">This project turns public GitHub activity into actionable insights such as personality signals, language patterns, commit quality, repo health, and role recommendations.</p>
-          <form>
-            <input type=\"text\" placeholder=\"Enter a GitHub username\" />
-            <button type=\"button\">Analyze Profile</button>
+          <form method="get" action="/analyze">
+            <input type="text" name="username" placeholder="Enter a GitHub username" required />
+            <button type="submit">Analyze Profile</button>
           </form>
         </div>
         <div class=\"panel\">
@@ -150,6 +150,15 @@ HTML_PAGE = """
 @app.get("/")
 def index():
     return HTML_PAGE
+
+
+@app.get("/analyze")
+def analyze():
+    username = request.args.get("username", "").strip()
+    if not username:
+        return "Please enter a GitHub username.", 400
+
+    return f"<h2>Analysis requested for {username}</h2><p>The GitHub analyzer is ready to process this profile.</p><p><a href=\"/\">Back</a></p>"
 
 
 @app.get("/health")
